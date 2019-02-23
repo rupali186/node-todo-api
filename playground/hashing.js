@@ -1,10 +1,21 @@
 const {SHA256}=require('crypto-js');
 const jwt=require('jsonwebtoken');
+const bcrypt=require('bcryptjs');
+
+var password='abc123!'
+// bcrypt.genSalt(10,(err,salt)=>{
+// 	bcrypt.hash(password,salt,(err,hash)=>{
+// 		console.log(hash);
+// 	});
+// });
+var hashedPass='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTU1MDkwNjI5OX0.M3y18QvMxR8RQzWr02TmrWR4mZY7QRCAiPOe_9XwIbA';
+bcrypt.compare(password,hashedPass,(err,res)=>{
+	console.log(res);
+});
 
 var data={
 	id:10
 };
-
 var token=jwt.sign(data,'123abc');
 console.log(token);
 
